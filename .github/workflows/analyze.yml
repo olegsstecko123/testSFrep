@@ -38,11 +38,11 @@ jobs:
       - name: Debug plugins
         run: sf plugins
       - name: Run CA
-        run: sf code-analyzer run
+        run: sf code-analyzer run --output-file results.csv
           
 
   # close_pr:
-    # if: failure()  # Этот шаг выполнится, если анализ не прошел
+    # if: failure() 
     # needs: analyze
     # runs-on: ubuntu-latest
     # steps:
