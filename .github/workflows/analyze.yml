@@ -15,7 +15,7 @@ jobs:
 
       - name: Install Salesforce CLI  
         run: |
-          curl -sSL https://developer.salesforce.com/media/salesforce-cli/install.sfdx-cli | bash
+          npm install --global sfdx-cli
           export PATH=/usr/local/bin:$PATH  
 
       - name: Install Salesforce Code Analyzer  
