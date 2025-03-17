@@ -22,7 +22,7 @@ jobs:
         run: sfdx plugins:install @salesforce/sfdx-scanner  
 
       - name: Run Static Code Analysis  
-        run: sfdx scanner:run --format table --target force-app  
+        run: sf scanner run --format table --target force-app
 
   # close_pr:
     # if: failure()  # Этот шаг выполнится, если анализ не прошел
