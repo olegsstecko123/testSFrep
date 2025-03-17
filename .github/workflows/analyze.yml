@@ -33,12 +33,7 @@ jobs:
           name: analysis-results
           path: results.csv
 
-      - name: Comment on PR with Report Link
-        if: always()
-        uses: mshick/add-pr-comment@v2
-        with:
-          message: "📊 **Code Analysis Report available:** [Download CSV](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})"
-  # close_pr:
+       # close_pr:
     # if: failure() 
     # needs: analyze
     # runs-on: ubuntu-latest
