@@ -39,7 +39,7 @@ jobs:
         run: sf plugins
       - name: Install Salesforce CLI
         run: |
-          - sf scanner run -t "./force-app/" -o "force-app-sf-code-analyser-result.csv" -f csv
+          sf scanner run -t "./force-app/" -o "force-app-sf-code-analyser-result.csv" -f csv
 
   # close_pr:
     # if: failure()  # Этот шаг выполнится, если анализ не прошел
