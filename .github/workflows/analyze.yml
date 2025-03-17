@@ -10,22 +10,30 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:  
-      - name: Checkout Code  
-        uses: actions/checkout@v4  
+      # - name: Checkout Code  
+      #   uses: actions/checkout@v4  
 
-      - name: Install Salesforce CLI  
-        run: |
-          npm install --global sfdx-cli
-          export PATH=/usr/local/bin:$PATH  
+      # - name: Install Salesforce CLI  
+      #   run: |
+      #     npm install --global sfdx-cli
+      #     export PATH=/usr/local/bin:$PATH  
 
       # - name: Install Salesforce Code Analyzer  
       #   run: sfdx plugins:install @salesforce/sfdx-scanner  
 
-      - name: Check Installed Plugins
-        run: sf plugins
+      # - name: Check Installed Plugins
+      #   run: sf plugins
 
-      - name: Run Static Code Analysis  
-        run: sf scanner run --format table --target force-app
+      # - name: Run Static Code Analysis  
+      #   run: sf scanner run --format table --target force-app
+
+      - name: Install Salesforce CLI
+        run: |
+          npm install --global @salesforce/cli
+          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH  # Ensure CLI is in PATH
+
+      - name: Verify Salesforce CLI Installation
+        run: sf --version
 
   # close_pr:
     # if: failure()  # Этот шаг выполнится, если анализ не прошел
