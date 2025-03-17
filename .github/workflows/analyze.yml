@@ -40,11 +40,21 @@ jobs:
       - name: Run CA
         run: sf code-analyzer run -w "force-app" --output-file results.csv
 
-      - name: Upload Code Analysis Results
-        uses: actions/upload-artifact@v3
-        with:
-          name: analysis-results
-          path: results.csv
+      # - name: Upload Code Analysis Results
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: analysis-results
+      #     path: results.csv
+
+      - name: Commit and Push Results to Repo
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add results.csv
+          git commit -m "Add static code analysis results"
+          git push origin HEAD
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 
   # close_pr:
