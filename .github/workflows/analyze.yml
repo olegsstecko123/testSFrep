@@ -38,7 +38,7 @@ jobs:
       - name: Debug plugins
         run: sf plugins
       - name: Run CA
-        run: sf code-analyzer run -w "./force-app/" --output-file results.csv
+        run: sf code-analyzer run -w "testSFrep/force-app/" --output-file results.csv
           
 
   # close_pr:
