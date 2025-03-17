@@ -33,6 +33,10 @@ jobs:
           name: analysis-results
           path: results.csv
 
+      - name: Print Report Link
+        if: always()
+        run: echo "Analysis Report Available [Download here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+
           
 
   # close_pr:
