@@ -35,6 +35,9 @@ jobs:
       - name: Verify Salesforce CLI Installation
         run: sf --version
 
+      - name: Debug plugins
+        run: sf plugins
+
   # close_pr:
     # if: failure()  # Этот шаг выполнится, если анализ не прошел
     # needs: analyze
