@@ -40,10 +40,10 @@ jobs:
       - name: Run CA
         run: sf code-analyzer run -w "force-app" --output-file results.csv
 
-      - name: Upload Results as Artifact
+      - name: Upload Code Analysis Results
         uses: actions/upload-artifact@v3
         with:
-          name: code-analysis-results
+          name: analysis-results
           path: results.csv
           
 
