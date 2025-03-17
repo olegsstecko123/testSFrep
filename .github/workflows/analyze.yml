@@ -13,20 +13,6 @@ jobs:
       - name: Checkout Code  
         uses: actions/checkout@v4  
 
-      # - name: Install Salesforce CLI  
-      #   run: |
-      #     npm install --global sfdx-cli
-      #     export PATH=/usr/local/bin:$PATH  
-
-      # - name: Install Salesforce Code Analyzer  
-      #   run: sfdx plugins:install @salesforce/sfdx-scanner  
-
-      # - name: Check Installed Plugins
-      #   run: sf plugins
-
-      # - name: Run Static Code Analysis  
-      #   run: sf scanner run --format table --target force-app
-
       - name: Install Salesforce CLI
         run: |
           npm install --global @salesforce/cli
@@ -38,13 +24,7 @@ jobs:
       - name: Debug plugins
         run: sf plugins
       - name: Run CA
-        run: sf code-analyzer run -w "force-app" --output-file results.csv
-
-      # - name: Upload Code Analysis Results
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: analysis-results
-      #     path: results.csv
+        run: sf code-analyzer run -w "force-app" --output-file results.csv -t 2
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
@@ -52,15 +32,6 @@ jobs:
           name: analysis-results
           path: results.csv
 
-      - name: Commit and Push Results to Repo
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-          git add results.csv
-          git commit -m "Add static code analysis results"
-          git push origin HEAD
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 
   # close_pr:
