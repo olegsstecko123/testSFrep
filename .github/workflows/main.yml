@@ -1,0 +1,38 @@
+name: Salesforce Code Analyzer and PR Close
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Salesforce CLI
+        run: |
+          curl -sSL https://developer.salesforce.com/media/salesforce-cli/install.sfdx-cli | bash
+          export PATH=/usr/local/bin:$PATH
+
+      - name: Authenticate Salesforce CLI
+        run: sfdx auth:jwt:grant --clientid ${{ secrets.SF_CLIENT_ID }} --jwtkeyfile ${{ secrets.SF_JWT_KEY_FILE }} --username ${{ secrets.SF_USERNAME }} --instanceurl https://login.salesforce.com
+
+      - name: Run Salesforce Code Analyzer (Tests)
+        run: sfdx force:apex:test:run --resultformat human --wait 10
+        continue-on-error: false  # Если анализ не прошел, workflow завершится с ошибкой
+
+  # close_pr:
+    # if: failure()  # Этот шаг выполнится, если анализ не прошел
+    # needs: analyze
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Close Pull Request if analysis failed
+    #     run: |
+    #       echo "Closing PR due to failed analysis..."
+    #       curl -X PATCH \
+    #         -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+    #         -d '{"state": "closed"}' \
+    #         "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}"
