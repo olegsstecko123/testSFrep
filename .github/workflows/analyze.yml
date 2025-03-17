@@ -39,6 +39,12 @@ jobs:
         run: sf plugins
       - name: Run CA
         run: sf code-analyzer run -w "force-app" --output-file results.csv
+
+      - name: Upload Results as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-analysis-results
+          path: results.csv
           
 
   # close_pr:
