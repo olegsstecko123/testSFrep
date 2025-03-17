@@ -27,6 +27,7 @@ jobs:
         run: sf code-analyzer run -w "force-app" --output-file results.csv -t 2
 
       - name: Archive production artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: analysis-results
