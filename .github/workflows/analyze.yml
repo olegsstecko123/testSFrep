@@ -25,9 +25,22 @@ jobs:
         run: sf plugins
       - name: Run CA
         run: |
+          # sf code-analyzer run -w "force-app" --output-file results.csv -t 3
+          # sf code-analyzer run --rule-selector cpd -w "force-app" --output-file resultsCPD.csv -t 3
+          # sf code-analyzer run --rule-selector flowtest -w "force-app" --output-file resultsFlowtest.csv -t 3
+
+          set +e
           sf code-analyzer run -w "force-app" --output-file results.csv -t 3
+          EXIT_CODE_1=$?
           sf code-analyzer run --rule-selector cpd -w "force-app" --output-file resultsCPD.csv -t 3
+          EXIT_CODE_2=$?
           sf code-analyzer run --rule-selector flowtest -w "force-app" --output-file resultsFlowtest.csv -t 3
+          EXIT_CODE_3=$?
+    
+          # If any command failed, exit with a non-zero status
+          if [ $EXIT_CODE_1 -ne 0 ] || [ $EXIT_CODE_2 -ne 0 ] || [ $EXIT_CODE_3 -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Archive production artifacts
         if: always()
