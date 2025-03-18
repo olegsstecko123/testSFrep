@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <div slot="title">
+            <div class="slds-page-header__title slds-truncate">Create invoice items</div>
+        </div>
+        <div >
+            <lightning-progress-bar variant="circular" style="width:200px;" value={progress} size="large"></lightning-progress-bar>
+            <lightning-input type="file" 
+            accept=".xlsx, .xls, .csv"
+            label="Excel table" onchange={readFile} multiple="false"></lightning-input>
+
+            <div if:true={fileName}>
+                {fileName}
+            </div>
+            <div if:false={fileName}>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+        <div slot="footer">
+            <lightning-button variant="brand" label="Submit"  onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>

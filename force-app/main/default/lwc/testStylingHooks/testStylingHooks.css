@@ -1,0 +1,15 @@
+:host {
+    --slds-c-button-font-weight: var(--slds-g-font-weight-7); /* Example value, adjust as needed */
+    --slds-c-button-font-size: 1.25rem;
+    --slds-c-button-text-color: rgb(110, 1, 1);
+    --slds-c-button-color-background: rgb(0, 255, 0);
+  }
+
+
+.slds-button {
+    
+    
+    --slds-c-button-color-border: rgb(255, 0, 243);
+    font-weight: var(--slds-c-button-font-weight);
+    font-size: var(--slds-c-button-font-size);
+}

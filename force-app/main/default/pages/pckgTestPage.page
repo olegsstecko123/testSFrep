@@ -1,0 +1,8 @@
+<apex:page controller="GetterTestClass" sidebar="false">
+    <apex:outputLabel id="one"> {!name}</apex:outputLabel>
+    some other text.
+    <apex:form >
+        <apex:inputtext value="{!name}"/>
+        <apex:commandbutton value="change" reRender="one"/>
+    </apex:form>
+</apex:page>
