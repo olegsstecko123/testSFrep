@@ -28,9 +28,16 @@ jobs:
         run: sf plugins
       - name: Run CA
         run: |
-          sf scanner run -t "./force-app/" -o "resultsPMD.csv" -f csv --engine pmd
-          sf scanner run -t "./force-app/" -o "resultsCPD.csv" -f csv --engine cpd
           
+          
+
+          set +e
+          sf scanner run -t "./force-app/" -o "resultsPMD.csv" -f csv --engine pmd --severity-threshold 3
+          EXIT_CODE_1=$?
+          sf scanner run -t "./force-app/" -o "resultsCPD.csv" -f csv --engine cpd --severity-threshold 3
+          EXIT_CODE_2=$?
+          
+          # will use 5.x version after release (currently in beta)
           # set +e
           # sf code-analyzer run --rule-selector pmd:all -w "force-app" --output-file results.csv -t 3
           # EXIT_CODE_1=$?
@@ -39,10 +46,10 @@ jobs:
           # sf code-analyzer run --rule-selector flowtest -w "force-app" --output-file resultsFlowtest.csv -t 3
           # EXIT_CODE_3=$?
     
-          # # If any command failed, exit with a non-zero status
-          # if [ $EXIT_CODE_1 -ne 0 ] || [ $EXIT_CODE_2 -ne 0 ] || [ $EXIT_CODE_3 -ne 0 ]; then
-          #   exit 1
-          # fi
+          # If any command failed, exit with a non-zero status
+          if [ $EXIT_CODE_1 -ne 0 ] || [ $EXIT_CODE_2 -ne 0 ] || [ $EXIT_CODE_3 -ne 0 ]; then
+            exit 1
+          fi
 
           
 
