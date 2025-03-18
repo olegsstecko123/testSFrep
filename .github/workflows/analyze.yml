@@ -1,4 +1,4 @@
-name: Salesforce Code Analyzer and PR Close
+name: Salesforce Code Analyzer 
 
 on:
   pull_request:
