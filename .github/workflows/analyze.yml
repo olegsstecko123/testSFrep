@@ -52,9 +52,5 @@ jobs:
             resultsCPD.csv
             resultsFlowtest.csv
 
-      - name: Comment PR
-        if: always()
-        run: |
-          echo "Test!"
-          exit 1  # Fails the workflow with the error message
+
       
