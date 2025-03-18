@@ -57,5 +57,4 @@ jobs:
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: 'Test!'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
