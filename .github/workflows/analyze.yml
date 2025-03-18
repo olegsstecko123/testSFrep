@@ -39,16 +39,3 @@ jobs:
             resultsCPD.csv
             resultsFlowtest.csv
       
-
-       # close_pr:
-    # if: failure() 
-    # needs: analyze
-    # runs-on: ubuntu-latest
-    # steps:
-    #   - name: Close Pull Request if analysis failed
-    #     run: |
-    #       echo "Closing PR due to failed analysis..."
-    #       curl -X PATCH \
-    #         -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-    #         -d '{"state": "closed"}' \
-    #         "https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}"
