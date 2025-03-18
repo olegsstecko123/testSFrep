@@ -1,0 +1,9 @@
+<apex:page controller="PublicGetterSetterClass" sidebar="false">
+    Input:
+    <apex:outputLabel id="one"> {!data.name}</apex:outputLabel>
+    <apex:form >
+    	<apex:inputtext value="{!name}"/>
+		<apex:commandbutton value="change" reRender="one"/>
+    </apex:form>
+    
+</apex:page>

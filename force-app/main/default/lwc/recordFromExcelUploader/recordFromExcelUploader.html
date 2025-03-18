@@ -1,0 +1,52 @@
+<template>
+    <lightning-card >
+        <lightning-spinner if:true={isLoading} style="height:100%" class="slds-align_absolute-center"
+        alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+        <h1 slot="title" >
+            <lightning-icon icon-name="standard:logging" size="medium"></lightning-icon>
+            &nbsp;{headerText}
+        </h1>
+        <div class="slds-m-around_medium">
+            <lightning-progress-bar variant="circular" style="width:80%;" value={progress} size="large"></lightning-progress-bar>
+            <div if:true={uploadStarted}>
+                {uploadStatus}
+            </div>
+            <div if:false={uploadStarted}>
+                <p>&nbsp;</p>
+            </div>
+            <lightning-layout >
+                <lightning-layout-item flexibility="auto">
+                    <lightning-input type="file" 
+                    accept=".xlsx"
+                    label={label.File_upload_field_label} onchange={readFile}  style="width:50%;" multiple="false" disabled={uploadStarted}></lightning-input>
+                    <div if:true={fileName}>
+                        {fileName}
+                    </div>
+                    <div if:false={fileName}>
+                        <p>&nbsp;</p>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+            <p if:true={errorsText} >
+                <template for:each={errorsText} for:item="error">
+                    <font color="red" align="center" key={error}>
+                    {error} 
+                    </font> 
+                    <br key={error}/>
+                </template>
+                
+            </p>
+        </div>
+        
+        <div slot="footer">
+            <div if:false={uploadFinished}>
+                <lightning-button variant="brand" label={label.Submit_button} disabled={noFile}  onclick={handleClick}></lightning-button>
+            </div>
+            <div if:true={uploadFinished}>
+                <lightning-button variant="brand" label={label.Done_button}  onclick={crlear}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+    
+</template>
