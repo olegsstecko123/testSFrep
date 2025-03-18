@@ -28,7 +28,7 @@ jobs:
         run: sf plugins
       - name: Run CA
         run: |
-          sf scanner run -t "./force-app/" -o "resultsPMD.csv" -f csv --engine pmd:all
+          sf scanner run -t "./force-app/" -o "resultsPMD.csv" -f csv --engine pmd
           sf scanner run -t "./force-app/" -o "resultsCPD.csv" -f csv --engine cpd
           
           # set +e
