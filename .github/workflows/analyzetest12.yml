@@ -59,9 +59,9 @@ jobs:
         with:
           name: analysis-results
           path: |
-            results.csv
+            resultsPMD.csv
             resultsCPD.csv
-            resultsFlowtest.csv
+            # resultsFlowtest.csv
 
 
       
