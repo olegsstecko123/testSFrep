@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>Skip_and_go_to_finish</name>
+        <choiceText>Skip and go to finish</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Skip and go to finish</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Stage_2</name>
+        <choiceText>Stage 2</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Stage_3</name>
+        <choiceText>Stage 3</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Stage_4</name>
+        <choiceText>Stage 4</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>Stage 1 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Stage 1</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>What_stage_to_run_next</name>
+        <label>What stage to run next?</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Select_next_stage</name>
+            <choiceReferences>Stage_2</choiceReferences>
+            <choiceReferences>Stage_3</choiceReferences>
+            <choiceReferences>Stage_4</choiceReferences>
+            <choiceReferences>Skip_and_go_to_finish</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select next stage</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>What_stage_to_run_next</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

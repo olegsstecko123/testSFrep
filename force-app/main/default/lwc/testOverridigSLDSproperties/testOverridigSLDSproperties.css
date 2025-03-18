@@ -1,0 +1,8 @@
+.slds-button {
+    color: rgb(110, 1, 1);
+    background-color: rgb(0, 255, 0);
+    border-color: rgb(255, 0, 243);
+    font-weight: var(--lwc-fontWeightBold,400);
+    font-size: 1.25rem;
+    
+}
