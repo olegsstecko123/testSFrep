@@ -2,6 +2,7 @@ name: Salesforce Code Analyzer
 
 on:
   pull_request:
+    types: [opened, reopened]
     branches:
       - main
       - dev
