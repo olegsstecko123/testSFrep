@@ -25,9 +25,9 @@ jobs:
         run: sf plugins
       - name: Run CA
         run: |
-          sf code-analyzer run -w "force-app" --output-file results.csv 
-          sf code-analyzer run --rule-selector cpd -w "force-app" --output-file resultsCPD.csv 
-          sf code-analyzer run --rule-selector flowtest -w "force-app" --output-file resultsFlowtest.csv 
+          sf code-analyzer run -w "force-app" --output-file results.csv -t 3
+          sf code-analyzer run --rule-selector cpd -w "force-app" --output-file resultsCPD.csv -t 3
+          sf code-analyzer run --rule-selector flowtest -w "force-app" --output-file resultsFlowtest.csv -t 3
 
       - name: Archive production artifacts
         if: always()
