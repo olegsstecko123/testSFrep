@@ -50,4 +50,10 @@ jobs:
             results.csv
             resultsCPD.csv
             resultsFlowtest.csv
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: 'Test!'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
