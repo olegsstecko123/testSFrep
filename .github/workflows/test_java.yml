@@ -27,4 +27,6 @@ jobs:
           java-version: '21'
           check-latest: true
     - run: java -version
+    - name: Checkout java 2
+      run: java -version
       
